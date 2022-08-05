@@ -21,13 +21,12 @@ cleanup_git_branches
 
 Both *zsh* and *bash* shell are supported.
 
-Just copy and paste the `cleanup_git_branches` function below in your shell profile or do something like
+Just copy and paste the `cleanup_git_branches` function below in your shell profile or (assuming you are using zsh) do something like
 
 ```sh
 mkdir -p ~/.shell
 cd ~/.shell
 git clone https://github.com/fibo/cleanup_git_branches.git
-# Assuming you are using zsh
 echo "source ~/.shell/cleanup_git_branches/fun.sh" >> ~/.zshrc
 ```
 
