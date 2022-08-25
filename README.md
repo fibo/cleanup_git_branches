@@ -30,6 +30,15 @@ git clone https://github.com/fibo/cleanup_git_branches.git
 echo "source ~/.shell/cleanup_git_branches/fun.sh" >> ~/.zshrc
 ```
 
+With the setup above, to update run the following
+
+```sh
+cd ~/.shell/cleanup_git_branches
+git pull origin main
+source ~/.zshrc
+cd -
+```
+
 ## Annotated source
 
 Create a `cleanup_git_branches` function
