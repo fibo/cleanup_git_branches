@@ -6,7 +6,7 @@ cleanup_git_branches() {
   		git branch -d $branch
   	done
   git fetch -p
-  for BRANCH_NAME in $(git branch -vv | grep '\[gone\]' | awk '{print $1}')
+  for BRANCH_NAME in $(git branch -v | grep '\[gone\]' | awk '{print $1}')
   	do
   		git branch -D $BRANCH_NAME
   	done

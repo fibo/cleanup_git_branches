@@ -48,11 +48,13 @@ Remove local branches (excluding main branch) that are already merged
 Remove local branches with no remote reference
 
       git fetch -p
-      for BRANCH_NAME in $(git branch -vv | grep '\[gone\]' | awk '{print $1}')
+      for BRANCH_NAME in $(git branch -v | grep '\[gone\]' | awk '{print $1}')
       	do
       		git branch -D $BRANCH_NAME
       	done
     }
+
+To generate sources, enter this repo folder and run `make`.
 
 ## License
 
