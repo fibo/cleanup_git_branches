@@ -41,29 +41,44 @@ cd -
 
 ## Annotated source
 
+To generate sources, enter this repo folder and run `make`.
+
 Create a `cleanup_git_branches` function
 
     cleanup_git_branches() {
+
+Get current working branch and repo default branch.
+
+      WORKING_BRANCH=`git rev-parse --abbrev-ref HEAD`
       DEFAULT_BRANCH=`basename $(git symbolic-ref refs/remotes/origin/HEAD)`
 
-Remove local branches (excluding main branch) that are already merged
+Go to default branch.
 
-      git switch $DEFAULT_BRANCH
+      if [ "$DEFAULT_BRANCH" != "$WORKING_BRANCH" ]; then
+        git switch $DEFAULT_BRANCH
+      fi
+
+Remove local branches (excluding main branch) that are already merged.
+
       git branch --merged | grep -v $DEFAULT_BRANCH | while read branch
       	do
       		git branch -d $branch
       	done
 
-Remove local branches with no remote reference
+Remove local branches with no remote reference.
 
       git fetch -p
       for BRANCH_NAME in $(git branch -v | grep '\[gone\]' | awk '{print $1}')
       	do
       		git branch -D $BRANCH_NAME
       	done
-    }
 
-To generate sources, enter this repo folder and run `make`.
+Back to previous branch.
+
+      if [ "$DEFAULT_BRANCH" != "$WORKING_BRANCH" ]; then
+        git switch $WORKING_BRANCH
+      fi
+    }
 
 ## License
 
