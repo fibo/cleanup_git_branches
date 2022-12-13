@@ -80,6 +80,17 @@ Back to previous branch.
       fi
     }
 
+
+## Tip
+
+If you need to change default branch, once done remotly (for instance on GitHub), you need
+to update your local repository.
+Assuming the new default branch is `main`, launch
+
+```sh
+git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
+```
+
 ## License
 
 [MIT](https://fibo.github.io/mit-license)
