@@ -83,7 +83,7 @@ Back to previous branch.
 
 ## Tip
 
-If you need to change default branch, once done remotly (for instance on GitHub), you need
+If you need to change default branch, once done remotely (for instance on GitHub), you need
 to update your local repository.
 Assuming the new default branch is `main`, launch
 
