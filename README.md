@@ -60,9 +60,13 @@ Remove local branches (excluding main branch) that are already merged.
         git branch -d $BRANCH_NAME
       done
 
-Remove local branches which remote reference does not exist anymore.
+Remove local branches and worktrees which remote reference does not exist anymore.
 
     git fetch --prune
+    for BRANCH_REF in $(git branch -v | grep '\[gone\]' | grep '^+' | awk '{print $3}')
+      do
+        git worktree remove `git worktree list | grep $BRANCH_REF | awk '{print $1}'`
+      done
     for BRANCH_NAME in $(git branch -v | grep '\[gone\]' | awk '{print $1}')
       do
         git branch -D $BRANCH_NAME

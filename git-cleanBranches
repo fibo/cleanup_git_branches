@@ -9,6 +9,10 @@ git branch --merged | grep -v $DEFAULT_BRANCH | while read BRANCH_NAME
     git branch -d $BRANCH_NAME
   done
 git fetch --prune
+for BRANCH_REF in $(git branch -v | grep '\[gone\]' | grep '^+' | awk '{print $3}')
+  do
+    git worktree remove `git worktree list | grep $BRANCH_REF | awk '{print $1}'`
+  done
 for BRANCH_NAME in $(git branch -v | grep '\[gone\]' | awk '{print $1}')
   do
     git branch -D $BRANCH_NAME
